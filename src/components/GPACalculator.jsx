@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SelectMenu from './SelectMenu'; // Assuming you have this component set up
-import { MinusIcon } from '@radix-ui/react-icons';
+import { MinusCircledIcon } from '@radix-ui/react-icons';
 
 const gradePointsTable = {
   AP: { 'A+': 5.3, A: 5.0, 'A-': 4.7, 'B+': 4.3, B: 4.0, 'B-': 3.7, 'C+': 3.3, C: 3.0, 'C-': 2.7, 'D+': 2.3, D: 2.0, F: 0.0 },
@@ -131,7 +131,7 @@ const GPACalculator = () => {
               </td>
               <td className="border border-paper-text w-1/12">
                 <button onClick={() => removeRow(index)} className="py-1 text-red-500 hover:outline rounded-sm">
-                  <MinusIcon className='h-5 w-5 center-center' />
+                  <MinusCircledIcon className='h-5 w-5 center-center' />
                 </button>
               </td>
             </tr>

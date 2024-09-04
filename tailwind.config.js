@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
@@ -24,6 +25,8 @@ export default {
           mint: "rgb(155,236,200)",
           dracula: "hsl(231, 15%, 18%)",
           charcoal: "rgb(41,39,42)",
+          peach: "#f7a082",
+          prussian: "#003153 ",
         },
         dracula: {
           bg: "#282a36",

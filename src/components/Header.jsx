@@ -21,8 +21,6 @@ const Header = (props) => {
           </div>
         </div>
       </div>
-      {/* <Navbar /> */}
-      {/* <NewNavMenu className="fixed top-[5vh] flex flex-col gap- md:text-lg" /> */}
     </header>
   );
 };
