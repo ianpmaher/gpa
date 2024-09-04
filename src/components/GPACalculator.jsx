@@ -99,7 +99,7 @@ const GPACalculator = () => {
                   name="courseName"
                   value={course.courseName}
                   onChange={(event) => handleInputChange(index, event)}
-                  className="bg-paper-bg w-full md:h-auto text-black text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
+                  className="bg-paper-sub bg-opacity-50 w-full md:h-auto text-black text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
                 />
               </td>
               <td className="border border-paper-text">
@@ -130,7 +130,7 @@ const GPACalculator = () => {
                 {course.qualityPoints.toFixed(2)}
               </td>
               <td className="border border-paper-text w-1/12">
-                <button onClick={() => removeRow(index)} className="py-1 text-red-500 hover:outline rounded-sm">
+                <button onClick={() => removeRow(index)} className="py-1 text-red-500 hover:outline rounded-sm transition-all active:scale-125 duration-100">
                   <MinusCircledIcon className='h-5 w-5 center-center' />
                 </button>
               </td>
@@ -138,7 +138,7 @@ const GPACalculator = () => {
           ))}
         </tbody>
       </table>
-      <button onClick={addRow} className="hover:ring-2 hover:ring-green-800 mt-3 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center">Add Row</button>
+      <button onClick={addRow} className="hover:ring-2 hover:ring-green-800 mt-3 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all active:scale-125 duration-100">Add Row</button>
       <div className="mt-4 text-lg" title="click to copy to clipboard" onClick={handleCopy}>
         Your GPA is: &nbsp;
         <span className=" text-xl" >
