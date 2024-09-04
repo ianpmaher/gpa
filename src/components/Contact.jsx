@@ -1,7 +1,5 @@
-import Link from "next/link";
+import { FileTextIcon, GitHubLogoIcon, LinkedInLogoIcon, } from "@radix-ui/react-icons";
 import IconCard from "./IconCard";
-import Image from "next/image";
-import PopoverElem from "./PopoverElem";
 
 const Contact = (props) => {
   // conditional rendering, if user is on mobile and if Contact is in the footer, flex row, else flex column
@@ -27,9 +25,9 @@ const Contact = (props) => {
         className="bg-dracula-pink hover:bg-dracula-orange dark:bg-dracula-blue dark:hover:bg-dracula-green"
         variant={`${isDark ? "darkColors" : "lightColors"}`}
       >
-        <Link href="https://www.github.com/ianpmaher" target="_blank" rel="" title="GitHub" className={`rounded-2xl`}>
-          <Image src="/assets/github-icon.svg" alt="GitHub logo" width={40} height={40} priority />
-        </Link>
+        <a href="https://www.github.com/ianpmaher" target="_blank" rel="" title="GitHub" className={`rounded-2xl`}>
+          <GitHubLogoIcon className="w-10 h-10" />
+        </a>
       </IconCard>
       {/* <IconCard variant="primary"> */}
       {/* <Link
@@ -41,35 +39,34 @@ const Contact = (props) => {
                 >
                     <Image src="/assets/email.svg" alt="email me!" width={50} height={50} />
                 </Link> */}
-      <PopoverElem />
       {/* </IconCard> */}
       <IconCard
         className="bg-dracula-blue hover:bg-dracula-orange dark:bg-dracula-purple dark:hover:bg-dracula-green"
         variant={`${isDark ? "darkColors" : "lightColors"}`}
       >
-        <Link
+        <a
           href="https://www.linkedin.com/in/ianmaher/"
           target="_blank"
           // rel="noreferrer noopener"
           title="LinkedIn"
           className="rounded-2xl"
         >
-          <Image src="/assets/linkedin.svg" alt="LinkedIn logo" width={40} height={40} priority />
-        </Link>
+          <LinkedInLogoIcon className="w-10 h-10" />
+        </a>
       </IconCard>
       <IconCard
         className="bg-dracula-purple hover:bg-dracula-orange dark:bg-dracula-pink dark:hover:bg-dracula-green"
         variant={`${isDark ? "darkColors" : "lightColors"}`}
       >
-        <Link
+        <a
           href="https://drive.google.com/file/d/1S3Z0SHbmL8AsLn1BVAllOvBuvpRAP8Gj/view?usp=sharing"
           target="_blank"
           // rel="noreferrer noopener"
           title="Resume"
           className="rounded-2xl"
         >
-          <Image src="/assets/document.svg" alt="text document image" width={40} height={40} priority />
-        </Link>
+          <FileTextIcon className="w-10 h-10" />
+        </a>
       </IconCard>
     </section>
   );
