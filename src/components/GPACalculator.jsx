@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import SelectMenu from './SelectMenu'; // Assuming you have this component set up
+import CSVDownloaderUtil from '../utils/CSVDownloaderUtil'; // Import the CSV downloader component
 import { MinusCircledIcon } from '@radix-ui/react-icons';
 
 const gradePointsTable = {
@@ -65,7 +66,6 @@ const GPACalculator = () => {
     calculateGPA(updatedCourses);
   };
 
-
   const handleCopy = () => {
     navigator.clipboard.writeText(gpa.toFixed(2));
     setCopySuccess(true);
@@ -75,9 +75,21 @@ const GPACalculator = () => {
     }, 2000);
   };
 
+  // Format data for CSV download
+  const formatCSVData = () => {
+    return courses.map((course) => ({
+      CourseName: course.courseName || 'N/A',
+      Level: course.level || 'N/A',
+      Grade: course.grade || 'N/A',
+      Credits: course.credits || 'N/A',
+      GradePoints: course.gradePoints.toFixed(2),
+      QualityPoints: course.qualityPoints.toFixed(2),
+    }));
+  };
+
   return (
-    <div className='flex flex-col self-start justify-self-center sm:p-2'>
-      <table className="md:table-auto border-collapse mt-10 md:w-[80vw] min-w-fit">
+    <div className="flex flex-col self-start justify-self-center sm:p-2">
+      <table className="table-auto border-collapse mt-10 min-w-fit md:w-[80vw]">
         <caption className="text-center text-xl">Case High GPA Calculator</caption>
         <thead className=" text-wrap">
           <tr>
@@ -90,7 +102,7 @@ const GPACalculator = () => {
             <th className='text-red-500'>Remove Row</th>
           </tr>
         </thead>
-        <tbody className='text-sm'>
+        <tbody className="text-sm">
           {courses.map((course, index) => (
             <tr key={index} className="odd:bg-opacity-50 odd:bg-dracula-purple">
               <td className="border border-paper-text w-1/2">
@@ -149,6 +161,14 @@ const GPACalculator = () => {
         </span>
 
       </div>
+
+      {/* CSV Download Button */}
+      <div className="text-sm mt-5">
+          Download as a CSV for import into Excel or Google Sheets: 
+          &nbsp;
+          <hr/>
+      </div>
+      <CSVDownloaderUtil data={formatCSVData()} />
     </div>
   );
 };
