@@ -89,8 +89,7 @@ const GPACalculator = () => {
 
   return (
     <div className="flex flex-col self-start justify-self-center sm:p-2">
-      <table className="table-auto border-collapse mt-10 min-w-fit md:w-[80vw]">
-        <caption className="text-center text-xl">Case High GPA Calculator</caption>
+      <table className="table-auto border-collapse mt-6 min-w-fit md:w-[80vw]">
         <thead className=" text-wrap">
           <tr>
             <th>Class</th>
@@ -112,7 +111,7 @@ const GPACalculator = () => {
                   value={course.courseName}
                   placeholder='English 9, Math 9, etc.'
                   onChange={(event) => handleInputChange(index, event)}
-                  className="bg-paper-sub bg-opacity-50 w-full md:h-auto text-black text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
+                  className="bg-paper-sub text-black dark:bg-paper-main dark:text-paper-bg bg-opacity-50 w-full md:h-auto text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
                 />
               </td>
               <td className="border border-paper-text">

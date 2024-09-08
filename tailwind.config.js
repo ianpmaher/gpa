@@ -18,6 +18,7 @@ export default {
           "linear-gradient(to bottom right, red 0%, orange 20%, yellow 30%, green 50%, blue 70%, indigo 80%, violet 100%)",
         cannedgradient: "linear-gradient(70deg, #4F63F6 10%, #2740F5 30%, #7FEFC6 50%, #5ECBF7 70%, #ED8097 90%)",
         gradientDark: "radial-gradient(ellipse at 50%, #003153 10%, #6272a4 40%, #444 70%)",
+        nauticalGradient: "linear-gradient(70deg, #457B9D 10%, #1D3557 30%, #A8DADC 50%, #F1FAEE 70%, #457B9D 90%)",
       },
       colors: {
         primary: {

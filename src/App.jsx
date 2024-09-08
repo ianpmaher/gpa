@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <main className="font-inter">
-        <header className="fixed top-0 right-0 z-50 dark:bg-primary-prussian bg-primary-peach">
+        <header className="fixed top-0 right-0 z-50 rounded-b-md dark:bg-primary-prussian bg-primary-peach">
           <ThemeMode className="m-0" />
         </header>
         <HomePage />
