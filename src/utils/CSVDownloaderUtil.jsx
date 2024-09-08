@@ -7,7 +7,7 @@ export default function CSVDownloaderUtil({ data }) {
   return (
     <CSVDownloader
       type={Type.Button}
-      filename={"myGPA.csv"}
+      filename={"myGPA"}
       bom={true}
       config={{
         delimiter: ",",

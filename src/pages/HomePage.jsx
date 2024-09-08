@@ -3,7 +3,7 @@ import GPACalculator from "../components/GPACalculator";
 
 const HomePage = () => {
   return (
-    <div className="w-full h-screen waves-maroon">
+    <div className="w-full h-screen bg-phonedark dark:bg-gradientDark waves-maroon">
       <div className="dark:bg-dracula-bg bg-paper-bg bg-opacity-90 rounded-2xl text-paper-text dark:text-dracula-text font-karla text-center h-[80vh] flex flex-col w-[90vw] my-0 mx-auto">
         <div className="flex flex-col justify-center ">
         </div> 

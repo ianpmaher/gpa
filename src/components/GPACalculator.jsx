@@ -110,6 +110,7 @@ const GPACalculator = () => {
                   type="text"
                   name="courseName"
                   value={course.courseName}
+                  placeholder='English 9, Math 9, etc.'
                   onChange={(event) => handleInputChange(index, event)}
                   className="bg-paper-sub bg-opacity-50 w-full md:h-auto text-black text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
                 />

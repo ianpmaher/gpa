@@ -17,6 +17,7 @@ export default {
         rainbow:
           "linear-gradient(to bottom right, red 0%, orange 20%, yellow 30%, green 50%, blue 70%, indigo 80%, violet 100%)",
         cannedgradient: "linear-gradient(70deg, #4F63F6 10%, #2740F5 30%, #7FEFC6 50%, #5ECBF7 70%, #ED8097 90%)",
+        gradientDark: "radial-gradient(ellipse at 50%, #003153 10%, #6272a4 40%, #444 70%)",
       },
       colors: {
         primary: {
@@ -40,6 +41,13 @@ export default {
           orange: "#ffb86c",
           pink: "#ec75c4",
           blue: "#8be9fd",
+        },
+        nautical: {
+          bg: "#F1FAEE",
+          blueLight: "#A8DADC",
+          blueDark: "#457B9D",
+          navy: "#1D3557",
+          accent: "#E63946",
         },
         paper: {
           bg: "#eeeeee",
