@@ -1,4 +1,5 @@
-import { DownloadIcon } from "@radix-ui/react-icons";
+import { GridIcon } from "@radix-ui/react-icons";
+
 import { useCSVDownloader } from "react-papaparse";
 
 export default function CSVDownloaderUtil({ data }) {
@@ -14,7 +15,7 @@ export default function CSVDownloaderUtil({ data }) {
       }}
       data={data}
     >
-      <DownloadIcon className="w-8 h-8 center-center hover:scale-150 duration-200 transition-all" />
+      <GridIcon className="w-8 h-8 center-center hover:scale-125 hover:text-sky-200 duration-200 transition-all" />
     </CSVDownloader>
   );
 }

@@ -1,5 +1,6 @@
 import Footer from "../components/Footer";
 import GPACalculator from "../components/GPACalculator";
+import TooltipComponent from "../components/TooltipComponent";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,9 @@ const HomePage = () => {
           <div className=" outline outline-4 outline-nautical-blueDark h-full md:w-full mx-auto my-4 self-center flex justify-center rounded-md">
             <GPACalculator />
           </div>
+          <TooltipComponent className="text-center">
+            <div className="text-sm">Hover over the plus icon to add a course</div>
+          </TooltipComponent>
         </div>
         <Footer className="fixed bottom-0 right-0 bg-dracula-blue text-black p-1 rounded-lg" />
       </div>
