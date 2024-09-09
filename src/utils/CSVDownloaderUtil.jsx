@@ -15,7 +15,7 @@ export default function CSVDownloaderUtil({ data }) {
       }}
       data={data}
     >
-      <GridIcon className="w-8 h-8 center-center hover:scale-125 hover:text-sky-200 duration-200 transition-all" />
+      <GridIcon className="w-8 h-8 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all" />
     </CSVDownloader>
   );
 }

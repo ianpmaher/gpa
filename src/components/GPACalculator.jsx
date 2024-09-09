@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SelectMenu from "./SelectMenu"; // Assuming you have this component set up
 import CSVDownloaderUtil from "../utils/CSVDownloaderUtil"; // Import the CSV downloader component
-import { MinusCircledIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import { FileTextIcon, MinusCircledIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import PDFDownloaderUtil from "../utils/PDFDownloaderUtil";
 import PDFViewerUtil from "../utils/PDFViewerUtil";
+import TooltipComponent from "./TooltipComponent";
+import IconCard from "./IconCard";
 
 const gradePointsTable = {
   AP: {
@@ -84,6 +86,7 @@ const GPACalculator = () => {
   const [courses, setCourses] = useState(Array(7).fill({ ...initialCourse }));
   const [gpa, setGpa] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [displayPDF, setDisplayPDF] = useState(false);
 
   const handleInputChange = (index, event) => {
     const { name, value } = event.target;
@@ -153,6 +156,10 @@ const GPACalculator = () => {
     }));
   };
 
+  const handleDisplayPDF = () => {
+    setDisplayPDF(!displayPDF);
+  };
+
   return (
     <div className="flex flex-col self-start justify-self-center sm:p-2">
       <table className="table-auto border-collapse mt-6 min-w-fit md:w-[80vw]">
@@ -216,30 +223,40 @@ const GPACalculator = () => {
         </tbody>
       </table>
       <div className="relative mt-3">
-        <button
-          onClick={addRow}
-          className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
-        >
-          <PlusCircledIcon className="h-5 w-5 center-center" />
-        </button>
+        <TooltipComponent contentText="Add a new row to input more courses">
+          <div
+            onClick={addRow}
+            className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
+          >
+            <PlusCircledIcon className="h-5 w-5 center-center" />
+          </div>
+        </TooltipComponent>
       </div>
       <div className="mt-4 text-lg" title="click to copy to clipboard" onClick={handleCopy}>
         Your GPA is: &nbsp;
         <span className=" bg-paper-bg text-paper-text dark:bg-paper-text dark:text-white rounded-md p-1 text-xl font-bold">
           {gpa.toFixed(2)}
-          {copySuccess && <div className="text-green-500 p-2">Copied!</div>}
+          {copySuccess && <div className="text-green-500 p-2 inline">Copied!</div>}
         </span>
       </div>
 
       {/* CSV Download Button */}
-      <div className="flex flex-col justify-center items-center">
-        <div className="text-sm mt-">Download as a CSV for import into Excel or Google Sheets: &nbsp;</div>
-        <CSVDownloaderUtil data={formatCSVData()} />
+      <div className="flex justify-around items-baseline my-10">
+        <IconCard variant="container" className="">
+          <div className="text-sm text-wrap">Download for import into Excel / Google Sheets: &nbsp;</div>
+          <CSVDownloaderUtil data={formatCSVData()} />
+        </IconCard>
         {/* PDF Download Button */}
-        <div className="text-sm mt-">Download as a PDF: &nbsp;</div>
-        <PDFDownloaderUtil data={formatCSVData()} gpa={gpa} />
+        <IconCard variant="container" className="">
+          <div className="text-sm mt-">Download as a PDF: &nbsp;</div>
+          <PDFDownloaderUtil data={formatCSVData()} gpa={gpa} />
+        </IconCard>
+        <IconCard variant="container" className="text-sm">
+          View as a PDF: &nbsp;
+          <FileTextIcon onClick={handleDisplayPDF} className="center-center w-8 h-8 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all" />
+        </IconCard>
       </div>
-      <PDFViewerUtil data={formatCSVData()} gpa={gpa} />
+      {displayPDF && <PDFViewerUtil data={formatCSVData()} gpa={gpa} />}
     </div>
   );
 };

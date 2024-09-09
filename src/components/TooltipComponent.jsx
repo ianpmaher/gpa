@@ -1,19 +1,21 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { PlusCircledIcon } from "@radix-ui/react-icons";
 
-const TooltipComponent = ({ children, className }) => {
+const TooltipComponent = ({ contentText, children, className }) => {
   return (
     <div className={`${className}`}>
       <Tooltip.Provider>
-        <Tooltip.Root>
+        <Tooltip.Root delayDuration={200}>
           <Tooltip.Trigger asChild>
-            <button aria-label="add row" className="">
-              <PlusCircledIcon className="h-5 w-5 center-center" />
+            <button aria-label={contentText} className="">
+              {children}
             </button>
           </Tooltip.Trigger>
           <Tooltip.Portal>
-            <Tooltip.Content className="" sideOffset={5}>
-              {children}
+            <Tooltip.Content
+              className="text-xl bg-primary-dracula text-paper-bg dark:bg-paper-bg dark:text-paper-text"
+              sideOffset={5}
+            >
+              {contentText}
               <Tooltip.Arrow className="fill-white" />
             </Tooltip.Content>
           </Tooltip.Portal>
