@@ -1,11 +1,12 @@
 import { useState } from "react";
 import SelectMenu from "./SelectMenu"; // Assuming you have this component set up
 import CSVDownloaderUtil from "../utils/CSVDownloaderUtil"; // Import the CSV downloader component
-import { FileTextIcon, MinusCircledIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import { CopyIcon, FileTextIcon, MinusCircledIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 import PDFDownloaderUtil from "../utils/PDFDownloaderUtil";
 import PDFViewerUtil from "../utils/PDFViewerUtil";
 import TooltipComponent from "./TooltipComponent";
 import IconCard from "./IconCard";
+import CSVImporterUtil from "../utils/CSVImporterUtil";
 
 const gradePointsTable = {
   AP: {
@@ -80,7 +81,15 @@ const gradePointsTable = {
   },
 };
 
-const initialCourse = { courseName: "", level: "", grade: "", credits: "", gradePoints: 0, qualityPoints: 0 };
+const initialCourse = {
+  courseYear: "",
+  courseName: "",
+  level: "",
+  grade: "",
+  credits: "",
+  gradePoints: 0,
+  qualityPoints: 0,
+};
 
 const GPACalculator = () => {
   const [courses, setCourses] = useState(Array(7).fill({ ...initialCourse }));
@@ -135,6 +144,11 @@ const GPACalculator = () => {
     calculateGPA(updatedCourses);
   };
 
+  // CSV import handler
+  const handleCSVImport = (importedCourses) => {
+    setCourses(importedCourses);
+  };
+
   const handleCopy = () => {
     navigator.clipboard.writeText(gpa.toFixed(2));
     setCopySuccess(true);
@@ -147,6 +161,7 @@ const GPACalculator = () => {
   // Format data for CSV download
   const formatCSVData = () => {
     return courses.map((course) => ({
+      CourseYear: course.courseYear || "N/A",
       CourseName: course.courseName || "N/A",
       Level: course.level || "N/A",
       Grade: course.grade || "N/A",
@@ -165,6 +180,7 @@ const GPACalculator = () => {
       <table className="table-auto border-collapse mt-6 min-w-fit md:w-[80vw]">
         <thead className=" text-wrap">
           <tr>
+            <th>Year</th>
             <th>Class</th>
             <th>Level</th>
             <th>Grade</th>
@@ -177,6 +193,14 @@ const GPACalculator = () => {
         <tbody className="text-sm">
           {courses.map((course, index) => (
             <tr key={index} className="odd:bg-opacity-50 odd:bg-dracula-purple">
+              <td className="border border-paper-text">
+                <SelectMenu
+                  data={["9", "10", "11", "12"]}
+                  selected={course.courseYear}
+                  onChange={(value) => handleSelectChange(index, "courseYear", value)}
+                />
+              </td>
+
               <td className="border border-paper-text w-1/2">
                 <input
                   type="text"
@@ -184,7 +208,7 @@ const GPACalculator = () => {
                   value={course.courseName}
                   placeholder="English 9, Math 9, etc."
                   onChange={(event) => handleInputChange(index, event)}
-                  className="bg-paper-sub text-black dark:bg-paper-main dark:text-paper-bg bg-opacity-50 w-full md:h-auto text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
+                  className="bg-paper-sub text-black placeholder:text-gray-500 dark:bg-paper-main dark:text-paper-bg bg-opacity-60 w-full md:h-auto text-center focus:bg-sky-200 text-sm md:text-md text-wrap"
                 />
               </td>
               <td className="border border-paper-text">
@@ -232,18 +256,33 @@ const GPACalculator = () => {
           </div>
         </TooltipComponent>
       </div>
-      <div className="mt-4 text-lg" title="click to copy to clipboard" onClick={handleCopy}>
+      <div className=" mt-4 text-lg">
         Your GPA is: &nbsp;
-        <span className=" bg-paper-bg text-paper-text dark:bg-paper-text dark:text-white rounded-md p-1 text-xl font-bold">
+        <span className=" bg-paper-bg text-paper-text dark:bg-paper-text dark:text-white rounded-md p-1 text-xl font-bold mr-4">
           {gpa.toFixed(2)}
           {copySuccess && <div className="text-green-500 p-2 inline">Copied!</div>}
         </span>
+        <IconCard variant="container" className="text-sm max-w-fit max-h-fit center-center inline-flex self-center">
+          <TooltipComponent contentText="Copy GPA to clipboard" className="">
+            <CopyIcon
+              className="h-6 w-6 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all"
+              onClick={handleCopy}
+              aria-label="copy gpa to clipboard"
+            />
+          </TooltipComponent>
+        </IconCard>
       </div>
 
       {/* CSV Download Button */}
       <div className="flex justify-around items-baseline my-10">
         <IconCard variant="container" className="">
-          <div className="text-sm text-wrap">Download for import into Excel / Google Sheets: &nbsp;</div>
+          <div className="text-sm text-wrap">Import CSV: &nbsp;</div>
+          <CSVImporterUtil onCSVImport={handleCSVImport} />
+        </IconCard>
+      </div>
+      <div className="flex justify-evenly items-baseline">
+        <IconCard variant="container" className="">
+          <div className="text-sm text-wrap">Download for Excel / Google Sheets: &nbsp;</div>
           <CSVDownloaderUtil data={formatCSVData()} />
         </IconCard>
         {/* PDF Download Button */}
@@ -253,7 +292,10 @@ const GPACalculator = () => {
         </IconCard>
         <IconCard variant="container" className="text-sm">
           View as a PDF: &nbsp;
-          <FileTextIcon onClick={handleDisplayPDF} className="center-center w-8 h-8 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all" />
+          <FileTextIcon
+            onClick={handleDisplayPDF}
+            className="center-center w-8 h-8 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all"
+          />
         </IconCard>
       </div>
       {displayPDF && <PDFViewerUtil data={formatCSVData()} gpa={gpa} />}

@@ -7,6 +7,7 @@ export default {
       inter: ["Inter", "sans-serif"],
       sans: ["system-ui", "sans-serif"],
       serif: ["Merriweather", "serif"],
+      lexend: ["Lexend", "sans-serif"],
     },
     extend: {
       backgroundImage: {
