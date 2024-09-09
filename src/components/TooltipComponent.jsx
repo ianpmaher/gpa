@@ -6,7 +6,7 @@ const TooltipComponent = ({ contentText, children, className }) => {
       <Tooltip.Provider>
         <Tooltip.Root delayDuration={200}>
           <Tooltip.Trigger asChild>
-            <button aria-label={contentText} className="">
+            <button aria-label={contentText} className="p-1">
               {children}
             </button>
           </Tooltip.Trigger>

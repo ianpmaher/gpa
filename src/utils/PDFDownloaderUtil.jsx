@@ -43,6 +43,7 @@ const GPAReport = ({ data, gpa }) => (
         <Text style={styles.header}>Courses:</Text>
         <View style={styles.table}>
           <View style={styles.tableRow}>
+            <Text style={styles.tableCell}>Year</Text>
             <Text style={styles.tableCell}>Class</Text>
             <Text style={styles.tableCell}>Level</Text>
             <Text style={styles.tableCell}>Grade</Text>
@@ -52,6 +53,7 @@ const GPAReport = ({ data, gpa }) => (
           </View>
           {data.map((course, index) => (
             <View key={index} style={styles.tableRow}>
+              <Text style={styles.tableCell}>{course.CourseYear}</Text>
               <Text style={styles.tableCell}>{course.CourseName}</Text>
               <Text style={styles.tableCell}>{course.Level}</Text>
               <Text style={styles.tableCell}>{course.Grade}</Text>
