@@ -6,8 +6,9 @@ import PDFDownloaderUtil from "../utils/PDFDownloaderUtil";
 import PDFViewerUtil from "../utils/PDFViewerUtil";
 import TooltipComponent from "./TooltipComponent";
 import IconCard from "./IconCard";
-// import CSVImporterUtil from "../utils/CSVImporterUtil";
+import CSVImporterUtil from "../utils/CSVImporterUtil";
 import { initialCourses } from "../utils/InitialCourses";
+import { useLocation } from "react-router-dom";
 
 const gradePointsTable = {
   AP: {
@@ -99,6 +100,8 @@ const GPACalculator = (props) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const [displayPDF, setDisplayPDF] = useState(false);
 
+  const location = useLocation();
+
   const handleInputChange = (index, event) => {
     const { name, value } = event.target;
     updateCourse(index, name, value);
@@ -147,9 +150,9 @@ const GPACalculator = (props) => {
   };
 
   // CSV import handler
-  // const handleCSVImport = (importedCourses) => {
-  //   setCourses(importedCourses);
-  // };
+  const handleCSVImport = (importedCourses) => {
+    setCourses(importedCourses);
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(gpa.toFixed(2));
@@ -249,7 +252,7 @@ const GPACalculator = (props) => {
         </tbody>
       </table>
       <div className="relative mt-3">
-        <TooltipComponent contentText="Add a new row to input more courses">
+        <TooltipComponent contentText="Add a new row to input more courses" className="">
           <div
             onClick={addRow}
             className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
@@ -258,7 +261,7 @@ const GPACalculator = (props) => {
           </div>
         </TooltipComponent>
       </div>
-      <div className=" mt-4 text-lg">
+      <div className=" my-6 text-lg">
         Your GPA is: &nbsp;
         <span className=" bg-paper-bg text-paper-text dark:bg-paper-text dark:text-white rounded-md p-1 text-xl font-bold mr-4">
           {gpa.toFixed(2)}
@@ -274,20 +277,23 @@ const GPACalculator = (props) => {
           </TooltipComponent>
         </IconCard>
       </div>
-
+      {/* conditional if on /import path */}
+      {location.pathname === "/import" && (
+        <div className="flex justify-around items-baseline mb-4">
+          <IconCard variant="container" className="">
+            <div className="text-sm text-wrap">Import CSV: &nbsp;</div>
+            <CSVImporterUtil onCSVImport={handleCSVImport} />
+          </IconCard>
+        </div>
+      )}
       {/* CSV Download Button */}
-      {/* <div className="flex justify-around items-baseline my-10">
-        <IconCard variant="container" className="">
-          <div className="text-sm text-wrap">Import CSV: &nbsp;</div>
-          <CSVImporterUtil onCSVImport={handleCSVImport} />
-        </IconCard>
-      </div> */}
       <div className="flex justify-evenly items-baseline">
         <IconCard variant="container" className="">
           <div className="text-sm text-wrap">Download for Excel / Google Sheets: &nbsp;</div>
           <CSVDownloaderUtil data={formatCSVData()} />
         </IconCard>
         {/* PDF Download Button */}
+
         <IconCard variant="container" className="">
           <div className="text-sm mt-">Download as a PDF: &nbsp;</div>
           <PDFDownloaderUtil data={formatCSVData()} gpa={gpa} />

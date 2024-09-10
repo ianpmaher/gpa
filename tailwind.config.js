@@ -5,6 +5,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ["system-ui", "sans-serif"],
+      mono: ["Courier New", "monospace"],
     },
     extend: {
       backgroundImage: {

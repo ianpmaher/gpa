@@ -1,6 +1,4 @@
-import { RocketIcon } from "@radix-ui/react-icons";
-import Contact from "./Contact";
-import IconCard from "../components/IconCard";
+import Nav from "./Nav";
 
 const Header = (props) => {
   return (
@@ -11,14 +9,7 @@ const Header = (props) => {
             </div> */}
       <div className="absolute top-1 mx-auto my-0 flex md:flex-col justify-around gap-1 bg-transparent">
         <div className="flex md:flex-row flex-col justify-center items-center md:gap-4 gap-2 xl:py-0">
-          <a href="/" className="">
-            <IconCard variant="text">
-              <RocketIcon className="w-10 h-10" />
-            </IconCard>
-          </a>
-          <div className="mx-auto my-0 flex md:flex-row gap-3">
-            <Contact />
-          </div>
+          <Nav className="" />
         </div>
       </div>
     </header>

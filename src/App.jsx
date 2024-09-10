@@ -3,13 +3,17 @@ import HomePage from "./pages/HomePage";
 import ImportPage from "./pages/ImportPage";
 import ThemeMode from "./components/ThemeMode";
 import SeniorsPage from "./pages/SeniorsPage";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <>
       <main className="font-sans">
-        <header className="fixed top-0 right-0 z-50 rounded-b-md dark:bg-primary-prussian bg-primary-peach">
-          <ThemeMode className="m-0" />
+        <header className=" relative rounded-b-md py-2 px-1 dark:bg-primary-prussian bg-primary-peach ">
+          <Nav className=" inline" />
+          <div className="flex justify-end absolute top-1 right-0 z-50 rounded-b-md dark:bg-primary-prussian bg-primary-peach">
+            <ThemeMode className="m-0" />
+          </div>
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
