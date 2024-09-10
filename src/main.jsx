@@ -1,14 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import './main.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "./App.jsx";
+import "./index.css";
+import "./main.css";
 // import { setTheme } from './utils/DarkModeTW.js'
 
 // setTheme(localStorage.theme)
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <Router>
       <App />
-  </StrictMode>,
-)
+    </Router>
+  </StrictMode>
+);

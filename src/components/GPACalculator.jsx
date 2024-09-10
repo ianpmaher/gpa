@@ -6,7 +6,8 @@ import PDFDownloaderUtil from "../utils/PDFDownloaderUtil";
 import PDFViewerUtil from "../utils/PDFViewerUtil";
 import TooltipComponent from "./TooltipComponent";
 import IconCard from "./IconCard";
-import CSVImporterUtil from "../utils/CSVImporterUtil";
+// import CSVImporterUtil from "../utils/CSVImporterUtil";
+import { initialCourses } from "../utils/InitialCourses";
 
 const gradePointsTable = {
   AP: {
@@ -81,18 +82,19 @@ const gradePointsTable = {
   },
 };
 
-const initialCourse = {
-  courseYear: "",
-  courseName: "",
-  level: "",
-  grade: "",
-  credits: "",
-  gradePoints: 0,
-  qualityPoints: 0,
-};
+// no longer needed, imported from utils/InitialCourses.jsx
+// const initialCourse = {
+//   courseYear: "",
+//   courseName: "",
+//   level: "",
+//   grade: "",
+//   credits: "",
+//   gradePoints: 0,
+//   qualityPoints: 0,
+// };
 
-const GPACalculator = () => {
-  const [courses, setCourses] = useState(Array(7).fill({ ...initialCourse }));
+const GPACalculator = (props) => {
+  const [courses, setCourses] = useState(Array(props.numRows).fill({ ...props.courseData }));
   const [gpa, setGpa] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
   const [displayPDF, setDisplayPDF] = useState(false);
@@ -135,7 +137,7 @@ const GPACalculator = () => {
   };
 
   const addRow = () => {
-    setCourses([...courses, { ...initialCourse }]);
+    setCourses([...courses, { ...initialCourses }]);
   };
 
   const removeRow = (index) => {
@@ -145,9 +147,9 @@ const GPACalculator = () => {
   };
 
   // CSV import handler
-  const handleCSVImport = (importedCourses) => {
-    setCourses(importedCourses);
-  };
+  // const handleCSVImport = (importedCourses) => {
+  //   setCourses(importedCourses);
+  // };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(gpa.toFixed(2));
@@ -274,12 +276,12 @@ const GPACalculator = () => {
       </div>
 
       {/* CSV Download Button */}
-      <div className="flex justify-around items-baseline my-10">
+      {/* <div className="flex justify-around items-baseline my-10">
         <IconCard variant="container" className="">
           <div className="text-sm text-wrap">Import CSV: &nbsp;</div>
           <CSVImporterUtil onCSVImport={handleCSVImport} />
         </IconCard>
-      </div>
+      </div> */}
       <div className="flex justify-evenly items-baseline">
         <IconCard variant="container" className="">
           <div className="text-sm text-wrap">Download for Excel / Google Sheets: &nbsp;</div>
