@@ -1,6 +1,6 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 
-const TooltipComponent = ({ contentText, children, className }) => {
+const TooltipComponent = ({ contentText, children, className, side }) => {
   return (
     <div className={`${className}`}>
       <Tooltip.Provider>
@@ -12,8 +12,9 @@ const TooltipComponent = ({ contentText, children, className }) => {
           </Tooltip.Trigger>
           <Tooltip.Portal>
             <Tooltip.Content
-              className="text-xl bg-primary-dracula text-paper-bg dark:bg-paper-bg dark:text-paper-text"
+              className="text-lg bg-primary-dracula text-paper-bg dark:bg-paper-bg dark:text-paper-text text-wrap h-full w-fit"
               sideOffset={5}
+              side={side}
             >
               {contentText}
               <Tooltip.Arrow className="fill-white" />

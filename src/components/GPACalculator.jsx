@@ -252,7 +252,7 @@ const GPACalculator = (props) => {
         </tbody>
       </table>
       <div className="relative mt-3">
-        <TooltipComponent contentText="Add a new row to input more courses" className="">
+        <TooltipComponent contentText="Add a new row to input more courses" className="" side="top">
           <div
             onClick={addRow}
             className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
@@ -268,7 +268,7 @@ const GPACalculator = (props) => {
           {copySuccess && <div className="text-green-500 p-2 inline">Copied!</div>}
         </span>
         <IconCard variant="container" className="text-sm max-w-fit max-h-fit center-center inline-flex self-center">
-          <TooltipComponent contentText="Copy GPA to clipboard" className="">
+          <TooltipComponent contentText="Copy GPA to clipboard" className="" side="top">
             <CopyIcon
               className="h-6 w-6 center-center hover:scale-125 hover:text-sky-800 duration-200 transition-all"
               onClick={handleCopy}
