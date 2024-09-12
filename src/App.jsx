@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import ImportPage from "./pages/ImportPage";
 import ThemeMode from "./components/ThemeMode";
 import SeniorsPage from "./pages/SeniorsPage";
+import UpperclassmenPage from "./pages/UpperclassmenPage";
 import Nav from "./components/Nav";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/10through12" element={<UpperclassmenPage />} />
           <Route path="/seniors" element={<SeniorsPage />} />
           <Route path="/import" element={<ImportPage />} />
         </Routes>

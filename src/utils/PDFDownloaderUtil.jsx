@@ -71,7 +71,7 @@ const GPAReport = ({ data, gpa }) => (
 // PDF Downloader Component
 export default function PDFDownloaderUtil({ data, gpa }) {
   return (
-    <PDFDownloadLink document={<GPAReport data={data} gpa={gpa} />} fileName="GPA_Report.pdf">
+    <PDFDownloadLink document={<GPAReport data={data} gpa={gpa} />} fileName="myGPA.pdf">
       <svg
         width="15"
         height="15"
