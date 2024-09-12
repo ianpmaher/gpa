@@ -45,15 +45,15 @@ const ThemeMode = ({className}) => {
 
   return (
     <div className={`${className}`}>
-      <ToggleGroup.Root type="single" value={theme} onValueChange={setTheme} className="flex space-x-2">
+      <ToggleGroup.Root type="single" value={theme} onValueChange={setTheme} className="flex md:space-x-2">
         <ToggleGroup.Item value="os" className="p-1 hover:scale-110 transition-all duration-200">
-          <LaptopIcon className="w-6 h-6" />
+          <LaptopIcon className="md:w-6 md:h-6" />
         </ToggleGroup.Item>
         <ToggleGroup.Item value="light" className="p-1 hover:scale-110 transition-all duration-200">
-          <SunIcon className="w-6 h-6" />
+          <SunIcon className="md:w-6 md:h-6" />
         </ToggleGroup.Item>
         <ToggleGroup.Item value="dark" className="p-1 hover:scale-110 transition-all duration-200">
-          <MoonIcon className="w-6 h-6" />
+          <MoonIcon className="md:w-6 md:h-6" />
         </ToggleGroup.Item>
       </ToggleGroup.Root>
     </div>
