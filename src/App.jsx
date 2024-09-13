@@ -5,6 +5,7 @@ import ThemeMode from "./components/ThemeMode";
 import SeniorsPage from "./pages/SeniorsPage";
 import UpperclassmenPage from "./pages/UpperclassmenPage";
 import Nav from "./components/Nav";
+import HotTablePage from "./pages/HotTablePage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/10through12" element={<UpperclassmenPage />} />
           <Route path="/seniors" element={<SeniorsPage />} />
           <Route path="/import" element={<ImportPage />} />
+          <Route path="*" element={<HomePage />} />
+          <Route path="table" element={<HotTablePage />} />
         </Routes>
       </main>
     </>

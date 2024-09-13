@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 import "./main.css";
+import 'handsontable/dist/handsontable.full.min.css';
 // import { setTheme } from './utils/DarkModeTW.js'
 
 // setTheme(localStorage.theme)
