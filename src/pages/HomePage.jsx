@@ -1,4 +1,5 @@
 import Footer from "../components/Footer";
+import GoogleSheets from "../components/GoogleSheets";
 import GPACalculator from "../components/GPACalculator";
 import { initialCourses } from "../utils/InitialCourses";
 
@@ -11,6 +12,9 @@ const HomePage = () => {
           <h1 className="text-3xl font-bold text-black dark:text-white p-2 mt-4">Calculate your GPA</h1>
           <div className=" outline outline-4 outline-nautical-blueDark h-full md:w-full mx-auto my-4 self-center flex justify-center rounded-md">
             <GPACalculator courseData={initialCourses} numRows={7} />
+          </div>
+          <div className=" outline outline-4 outline-nautical-blueDark h-full md:w-full mx-auto my-4 self-center flex justify-center rounded-md">
+            <GoogleSheets />
           </div>
         </div>
         <Footer className="fixed bottom-0 right-0 bg-dracula-blue text-black p-1 rounded-lg" />
