@@ -1,16 +1,17 @@
+// PDFViewerUtil.js
 import { Page, Text, View, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
 
 // Create styles for the PDF document
 const styles = StyleSheet.create({
   page: {
-    padding: 30,
+    padding: 10,
   },
   section: {
     marginBottom: 10,
   },
   header: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: 16,
+    marginBottom: 8,
     fontWeight: 'bold',
   },
   table: {
@@ -23,8 +24,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   tableCell: {
-    width: '20%',
-    padding: 5,
+    width: '14%', // Adjusted to fit 7 columns
+    padding: 4,
     fontSize: 10,
   },
   text: {
@@ -44,7 +45,7 @@ const GPAReport = ({ data, gpa }) => (
         <View style={styles.table}>
           <View style={styles.tableRow}>
             <Text style={styles.tableCell}>Year</Text>
-            <Text style={styles.tableCell}>Class</Text>
+            <Text style={styles.tableCell}>Course</Text>
             <Text style={styles.tableCell}>Level</Text>
             <Text style={styles.tableCell}>Grade</Text>
             <Text style={styles.tableCell}>Credits</Text>
@@ -53,13 +54,13 @@ const GPAReport = ({ data, gpa }) => (
           </View>
           {data.map((course, index) => (
             <View key={index} style={styles.tableRow}>
-              <Text style={styles.tableCell}>{course.CourseYear}</Text>
-              <Text style={styles.tableCell}>{course.CourseName}</Text>
-              <Text style={styles.tableCell}>{course.Level}</Text>
-              <Text style={styles.tableCell}>{course.Grade}</Text>
-              <Text style={styles.tableCell}>{course.Credits}</Text>
-              <Text style={styles.tableCell}>{course.GradePoints}</Text>
-              <Text style={styles.tableCell}>{course.QualityPoints}</Text>
+              <Text style={styles.tableCell}>{course.courseYear}</Text>
+              <Text style={styles.tableCell}>{course.courseName}</Text>
+              <Text style={styles.tableCell}>{course.level}</Text>
+              <Text style={styles.tableCell}>{course.grade}</Text>
+              <Text style={styles.tableCell}>{course.credits}</Text>
+              <Text style={styles.tableCell}>{course.gradePoints}</Text>
+              <Text style={styles.tableCell}>{course.qualityPoints}</Text>
             </View>
           ))}
         </View>
@@ -69,8 +70,8 @@ const GPAReport = ({ data, gpa }) => (
 );
 
 // PDF Viewer Component
-const PDFViewerUtil = ({ data, gpa }) => (
-  <div style={{ height: '600px', border: '1px solid black', marginTop: '20px' }}>
+const PDFViewerUtil = ({ data, gpa, className }) => (
+  <div className={`${className} border mt-5 h-[50vh] w-full`}>
     <PDFViewer width="100%" height="100%">
       <GPAReport data={data} gpa={gpa} />
     </PDFViewer>
