@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import GoogleSheets from "../components/GoogleSheets";
 import GPACalculator from "../components/GPACalculator";
+import HotTableTest from "../components/HotTableTest";
 import { initialCourses } from "../utils/InitialCourses";
 
 const HomePage = () => {
@@ -15,6 +16,9 @@ const HomePage = () => {
           </div>
           <div className=" outline outline-4 outline-nautical-blueDark h-full md:w-full mx-auto my-4 self-center flex justify-center rounded-md">
             <GoogleSheets />
+          </div>
+          <div className="flex flex-col justify-center">
+            <HotTableTest />
           </div>
         </div>
         <Footer className="fixed bottom-0 right-0 bg-dracula-blue text-black p-1 rounded-lg" />
