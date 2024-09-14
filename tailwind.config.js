@@ -20,6 +20,12 @@ export default {
         nauticalGradient: "linear-gradient(70deg, #457B9D 10%, #1D3557 30%, #A8DADC 50%, #F1FAEE 70%, #457B9D 90%)",
       },
       colors: {
+        aplus: {
+          midnight: "#222831",
+          gray: "#393E46",
+          tealDark: "00ADB5",
+          teal: "#00FFF5",
+        },
         primary: {
           yellow: "#FFD040",
           turquoise: "rgb(105,255,255)",

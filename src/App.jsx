@@ -22,8 +22,8 @@ function App() {
           <Route path="/10through12" element={<UpperclassmenPage />} />
           <Route path="/seniors" element={<SeniorsPage />} />
           <Route path="/import" element={<ImportPage />} />
+          <Route path="/table" element={<HotTablePage />} />
           <Route path="*" element={<HomePage />} />
-          <Route path="table" element={<HotTablePage />} />
         </Routes>
       </main>
     </>

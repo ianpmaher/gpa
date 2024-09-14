@@ -26,6 +26,9 @@ const GPACalcRefactored = ({ numRows = 3, courseData = {} }) => {
   const hotTableRef = useRef(null); // Use useRef to store the Handsontable instance
   const addingRowRef = useRef(false);
 
+  console.log("courseData:", courseData)
+  console.log("tableDat:", tableData)
+
   const isRowComplete = (row) => {
     return row.courseYear && row.courseName && row.level && row.grade && row.credits;
   };

@@ -19,13 +19,17 @@ const pages = [
     title: "import-csv",
     destination: "/import",
   },
+  {
+    title: "table",
+    destination: "/table",
+  },
 ];
 
 const Nav = ({ className }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const variant = {
-    open: { opacity: 1, x: "-100%", scale: 1 },
+    open: { opacity: 1, x: "-50%", scale: 1 },
     closed: { opacity: 1, x: 0, scale: 1 },
   };
 
@@ -65,12 +69,12 @@ const Nav = ({ className }) => {
       <div
         className={`${
           isOpen ? "block" : "hidden"
-        } md:flex flex flex-row items-center gap-3 md:gap-6 py-5 md:p-0 md:max-w-[50vw] justify-center center-center`}
+        } md:flex flex flex-row items-center gap-2 md:gap-6 p-[0.1rem] md:p-0 md:max-w-[50vw] justify-center center-center`}
       >
         {pages.map((page) => (
           <div
             key={page.destination}
-            className="sm:max-w-24 outline text-center h-full text-xs p-[0.05rem] bg-transparent dark:hover:bg-nautical-accent hover:bg-nautical-blueLight md:text-sm text-white hover:text-black rounded-sm transition-all duration-50 ease-in-out"
+            className="sm:max-w-24 max-w-12 outline text-center h-full text-xs p-[0.05rem] bg-transparent dark:hover:bg-nautical-accent hover:bg-nautical-blueLight md:text-sm text-white hover:text-black rounded-sm transition-all duration-100 ease-in-out"
           >
             <Link to={page.destination} className="">
               {page.title}
