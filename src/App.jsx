@@ -11,9 +11,9 @@ function App() {
   return (
     <>
       <main className="font-sans">
-        <header className=" relative rounded-b-md py-2 px-1 dark:bg-primary-prussian bg-primary-peach ">
+        <header className=" relative rounded-b-md py-2 px-1 dark:bg-dev-midnight bg-primary-peach ">
           <Nav className=" inline" />
-          <div className="flex justify-end absolute top-1 right-0 z-50 rounded-b-md dark:bg-primary-prussian bg-primary-peach">
+          <div className="flex justify-end absolute top-2 right-2 z-50 rounded-md dark:bg-nautical-blueDark bg-primary-peach">
             <ThemeMode className="m-0" />
           </div>
         </header>
