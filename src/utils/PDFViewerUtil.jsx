@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   table: {
     display: 'table',
     width: 'auto',
-    marginTop: 10,
+    marginTop: 8,
   },
   tableRow: {
     flexDirection: 'row',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
-    marginBottom: 5,
+    marginBottom: 2,
   },
 });
 
@@ -40,7 +40,7 @@ const GPAReport = ({ data, gpa }) => (
     <Page style={styles.page}>
       <Text style={styles.header}>GPA Report</Text>
       <View style={styles.section}>
-        <Text style={styles.text}>Student GPA: {gpa.toFixed(2)}</Text>
+        <Text style={styles.text}>Student GPA: {gpa.toFixed(4)}</Text>
         <Text style={styles.header}>Courses:</Text>
         <View style={styles.table}>
           <View style={styles.tableRow}>

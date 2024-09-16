@@ -23,7 +23,7 @@ export default {
         dev: {
           midnight: "#222831",
           gray: "#393E46",
-          tealDark: "00ADB5",
+          tealDark: "#00ADB5",
           teal: "#00FFF5",
         },
         primary: {

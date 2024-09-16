@@ -2,7 +2,7 @@ const IconCard = ({ variant, description, children, className }) => {
   const baseStyle =
     "flex flex-col flex-wrap items-center justify-center transition-all duration-200 ease-out object-contain";
   const variantStyle = {
-    container: "rounded-md bg-dracula-blue text-paper-text dark:bg-dracula-green dark:text-black shadow-xl p-2 ",
+    container: "rounded-md bg-dracula-blue text-paper-text dark:bg-dev-teal dark:text-black shadow-xl p-2 ",
     darkColors:
       "bg-opacity-70 hover:bg-opacity-100 hover:scale-110 hover:transform hover:rotate-12 hover:shadow-2xl p-1",
     lightColors:
