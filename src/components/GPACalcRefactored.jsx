@@ -18,7 +18,7 @@ const gradePointsTable = {
   3: { 'A+': 3.3, A: 3.0, 'A-': 2.7, 'B+': 2.3, B: 2.0, 'B-': 1.7, 'C+': 1.3, C: 1.0, 'C-': 0.7, 'D+': 0.3, D: 0.2, F: 0.0 },
 };
 
-const GPACalcRefactored = ({ numRows = 3, courseData = {} }) => {
+const GPACalcRefactored = ({ numRows = 7, courseData = {} }) => {
   const [tableData, setTableData] = useState(() => Array.from({ length: numRows }, () => ({ ...courseData })));
   const [gpa, setGpa] = useState(0);
   const [copySuccess, setCopySuccess] = useState(false);
@@ -26,8 +26,6 @@ const GPACalcRefactored = ({ numRows = 3, courseData = {} }) => {
   const hotTableRef = useRef(null); // Use useRef to store the Handsontable instance
   const addingRowRef = useRef(false);
 
-  console.log("courseData:", courseData)
-  console.log("tableDat:", tableData)
 
   const isRowComplete = (row) => {
     return row.courseYear && row.courseName && row.level && row.grade && row.credits;
@@ -149,10 +147,12 @@ const GPACalcRefactored = ({ numRows = 3, courseData = {} }) => {
   return (
     <div className="flex flex-col self-start justify-self-center sm:p-2">
       {/* Handsontable component */}
-      <div className="flex justify-center items-center">
+      <div className="flex h-full w-full min-w-fit justify-center items-center outline">
         <HotTable
           data={tableData}
           afterChange={handleTableChange}
+          autoWrapRow={true}
+          autoWrapCol={true}    
           dataSchema={{
             courseYear: "",
             courseName: "",
@@ -178,15 +178,19 @@ const GPACalcRefactored = ({ numRows = 3, courseData = {} }) => {
             { data: "qualityPoints", readOnly: true },
           ]}
           rowHeaders={true}
-          width="80vw"
+          width="90vw"
           height="auto"
-          colWidths={[100, 300, 100, 100, 100, 100, 100]}
+          trimRows={true}
+          stretchH="all"
+          trimWhitespace={true}
+          manualColumnResize={true}
+          colWidths={[50, 250, 60, 60, 80, 100, 100]}
           minSpareRows={0}
           licenseKey="non-commercial-and-evaluation"
           allowInsertRow={true}
           allowRemoveRow={true}
           contextMenu={["remove_row", "redo", "undo", "copy", "cut", "paste", "alignment", "row_above", "row_below"]}
-          className=""
+          className="htCenter custom-table"
           ref={hotTableRef}
         />
       </div>
