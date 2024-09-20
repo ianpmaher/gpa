@@ -264,7 +264,7 @@ const GPACalculator = (props) => {
       <div className=" my-6 text-lg">
         Your GPA is: &nbsp;
         <span className=" bg-paper-bg text-paper-text dark:bg-paper-text dark:text-white rounded-md p-1 text-xl font-bold mr-4">
-          {gpa.toFixed(2)}
+          {gpa.toFixed(4)}
           {copySuccess && <div className="text-green-500 p-2 inline">Copied!</div>}
         </span>
         <IconCard variant="container" className="text-sm max-w-fit max-h-fit center-center inline-flex self-center">

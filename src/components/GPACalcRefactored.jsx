@@ -41,7 +41,7 @@ const GPACalcRefactored = ({ numRows = 7, courseData = {} }) => {
     const updatedData = tableData.map((course) => {
       if (Object.values(course).some((value) => value !== null && value !== undefined && value !== "")) {
         const gradePoints = gradePointsTable[course.level]?.[course.grade] || 0;
-        const qualityPoints = gradePoints * (parseFloat(course.credits) || 0);
+        const qualityPoints = gradePoints * Math.floor((parseFloat(course.credits)) || 0);
         // Update the course object
         return { ...course, gradePoints, qualityPoints };
       } else {
