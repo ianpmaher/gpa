@@ -40,7 +40,8 @@ const Nav = ({ className }) => {
   return (
     <nav className={`${className} flex flex-row items-center justify-center center-center gap-3`}>
       {/* Hamburger Menu for Small Screens */}
-      <motion.div className="md:hidden flex justify-center w-screen items-center center-center"
+      <motion.div
+        className="md:hidden flex justify-center w-screen items-center center-center"
         initial={false}
         animate={isOpen ? "open" : "closed"}
         variants={variant}
@@ -72,14 +73,14 @@ const Nav = ({ className }) => {
         } md:flex flex flex-row items-center gap-2 md:gap-6 p-[0.1rem] md:p-0 md:max-w-[50vw] justify-center center-center`}
       >
         {pages.map((page) => (
-          <div
-            key={page.destination}
-            className="sm:max-w-24 max-w-12 outline text-center h-full text-xs p-[0.05rem] bg-transparent dark:hover:bg-nautical-accent hover:bg-nautical-blueLight md:text-sm text-white hover:text-black rounded-sm transition-all duration-100 ease-in-out"
-          >
-            <Link to={page.destination} className="">
-              {page.title}
-            </Link>
-          </div>
+          <Link key={page.destination} to={page.destination} className="text-white hover:text-gray-50">
+            <div
+              key={page.destination}
+              className="sm:max-w-24 max-w-12 outline text-center p-[0.2rem] h-full text-xs bg-transparent dark:hover:bg-nautical-accent hover:bg-nautical-blueLight md:text-sm text-white hover:text-black rounded-sm transition-all duration-200 ease-in-out hover:underline"
+            >
+              <span className="">{page.title}</span>
+            </div>
+          </Link>
         ))}
       </div>
     </nav>
