@@ -220,6 +220,7 @@ const GPACalcRefactored = ({ numRows = 7, courseData = {} }) => {
           className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
         >
           <PlusCircledIcon className="h-5 w-5 center-center" />
+          <span className="text-sm">Add Row</span>
         </button>
         <button onClick={clearData} className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-red-800 p-2 bg-red-500 text-white rounded-lg max-w-fit self-center transition-all">
           <TrashIcon className="h-5 w-5 center-center" />
