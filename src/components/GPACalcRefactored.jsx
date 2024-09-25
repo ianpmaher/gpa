@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { HotTable } from "@handsontable/react";
 import { registerAllModules } from "handsontable/registry";
 import "handsontable/dist/handsontable.full.min.css";
-import { CopyIcon, CrossCircledIcon, FileTextIcon, GridIcon, MinusCircledIcon, PlusCircledIcon, ReloadIcon } from "@radix-ui/react-icons";
+import { CopyIcon, CrossCircledIcon, FileTextIcon, GridIcon, MinusCircledIcon, PlusCircledIcon, ReloadIcon, TrashIcon } from "@radix-ui/react-icons";
 // import PDFDownloaderUtil from "../utils/PDFDownloaderUtil";
 import PDFViewerUtil from "../utils/PDFViewerUtil";
 import TooltipComponent from "./TooltipComponent";
@@ -19,14 +19,33 @@ const gradePointsTable = {
 };
 
 const GPACalcRefactored = ({ numRows = 7, courseData = {} }) => {
-  const [tableData, setTableData] = useState(() => Array.from({ length: numRows }, () => ({ ...courseData })));
-  const [gpa, setGpa] = useState(0);
+  const [tableData, setTableData] = useState(() => {
+    const savedData = localStorage.getItem("gpaCourses");
+    return savedData ? JSON.parse(savedData) : Array.from({ length: numRows }, () => ({ ...courseData }));
+  });
+  const [gpa, setGpa] = useState(() => {
+    const savedGPA = localStorage.getItem("gpaResult");
+    return savedGPA ? JSON.parse(savedGPA) : 0;
+  });
   const [copySuccess, setCopySuccess] = useState(false);
   const [showPDFViewer, setShowPDFViewer] = useState(false);
   const hotTableRef = useRef(null); // Use useRef to store the Handsontable instance
   const addingRowRef = useRef(false);
 
+  // Save tableData and GPA to localStorage on changes
+  useEffect(() => {
+    localStorage.setItem("gpaCourses", JSON.stringify(tableData));
+    localStorage.setItem("gpaResult", JSON.stringify(gpa));
+  }, [tableData, gpa]);
 
+  // Clear data function to reset localStorage and state
+  const clearData = () => {
+    localStorage.removeItem("gpaCourses");
+    localStorage.removeItem("gpaResult");
+    setTableData(Array.from({ length: numRows }, () => ({ ...courseData })));
+    setGpa(0);
+  };
+  
   const isRowComplete = (row) => {
     return row.courseYear && row.courseName && row.level && row.grade && row.credits;
   };
@@ -201,6 +220,10 @@ const GPACalcRefactored = ({ numRows = 7, courseData = {} }) => {
           className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-green-800 p-2 bg-green-500 text-white rounded-lg max-w-fit self-center transition-all"
         >
           <PlusCircledIcon className="h-5 w-5 center-center" />
+        </button>
+        <button onClick={clearData} className="hover:scale-125 hover:transition-all duration-200 hover:ring-2 hover:ring-red-800 p-2 bg-red-500 text-white rounded-lg max-w-fit self-center transition-all">
+          <TrashIcon className="h-5 w-5 center-center" />
+          <span className="text-sm">Clear Data</span>
         </button>
       </div>
       <div className=" my-6 text-lg">
